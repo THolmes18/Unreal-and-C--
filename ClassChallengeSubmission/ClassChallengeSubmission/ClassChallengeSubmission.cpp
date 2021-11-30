@@ -25,11 +25,11 @@ public:
 class tri : public SuperShape {
 public:
     
-    void show_area() {
+    void show_area() { //overrides the shape that wasn't listed.
         cout << "Triangle with height ";
         cout << x << " and base " << y;
         cout << " has an area of ";
-        cout << x * 0.5 * y << ".\n";
+        cout << x * 0.5 * y << ".\n"; 
         
     }
 };
@@ -70,7 +70,7 @@ int main()
     cin >> shape;
 
     if (shape == "triangle") {
-        tri t; // create objects of derived types;
+        tri t; // create instantiation of objects of derived types; or way to call
         cout << "What is the base of the triangle?: ";
         cin >> base;
         cout << "What is the height of the triangle? (top to bottom): ";
