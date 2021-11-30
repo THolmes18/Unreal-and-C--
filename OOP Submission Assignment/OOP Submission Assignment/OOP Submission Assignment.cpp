@@ -3,53 +3,35 @@
 
 #include <iostream>
 #include <string>
+using namespace std;
+
+//Classes and objects
+class Dog {
+public:
+    string Breed;
+    string Color;
+    int height;
+    int weight;
+    void bark() {
+        cout << "Woof, woof! \n"; //behavior
+    }
+};
+
+ 
 
 int main()
 {
-    //Classes and objects
-    class Dog {
-    public:
-        std::string state;
-        std::string behavior;
-        int height;
-        int weight;
-        void bark() {
-            std::cout << "Woof, woof! \n";
-        }
-    };
+    Dog dogobj;
+    dogobj.Breed = "Hound";
+    dogobj.Color = "Brown";
+    dogobj.height = 2;
+    dogobj.weight = 60;
 
-    //Derived class-Child--Inherit
-    class myDog1 : public Dog {
-    public:
-        std::string state = "Hound " "Brown ";
-        int height = 2;
-        int weight = 60;
+    dogobj.bark();
+    cout << dogobj.Breed << " " << dogobj.Color << " " << dogobj.height << " " << dogobj.weight;
+    return 0;
 
-        std::string behavior = "Shake " "Sit " "Lay down ";
-        
-    };
-
-   int main();
-    {
-       myDog1 doggy;
-       doggy.bark();
-       std::cout << doggy.state + " " + doggy.behavior;
-       std::cout << "2 feet " "60 pounds";
-
-       return 0;
-    }
-
-   /* int main();
-    {
-        Dog myDog;
-        myDog.height();
-        std::cout << myDog.state + " " + myDog.behavior;
-    }
-
-        
-
-        std::cout << dogObj1.state << " " << dogObj1.behavior << " " << dogObj1.weight << "\n";*/
-        //cout << carObj2.brand << " " << carObj2.model << " " << carObj2.year << "\n";
-        //return 0;
 }
+
+
 
