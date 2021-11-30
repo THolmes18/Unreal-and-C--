@@ -5,57 +5,111 @@
 #include <string>
 using namespace std;
 
+
+
+class SuperShape {
+protected:
+    double x, y;
+public:
+    string Color;
+    void set_dim(double i, double j = 0) {
+        x = i;
+        y = j;
+    }
+    virtual void show_area() {
+        cout << "No area computation defined ";
+        cout << "for this class.\n";
+    }
+};
+
+class tri : public SuperShape {
+public:
+    
+    void show_area() {
+        cout << "Triangle with height ";
+        cout << x << " and base " << y;
+        cout << " has an area of ";
+        cout << x * 0.5 * y << ".\n";
+        
+    }
+};
+
+class rec : public SuperShape {
+public:
+    void show_area() {
+        cout << "Square with dimensions ";
+        cout << x << "x" << y;
+        cout << " has an area of ";
+        cout << x * y << ".\n";
+    }
+};
+class circ : public SuperShape {
+public:
+    void show_area() {
+        cout << "Circle with radius ";
+        cout << x;
+        cout << " has an area of ";
+        cout << 3.14 * x * x << ".\n";
+    }
+};
+
 int main()
 {
+    string triangle;
+    string rectangle;
+    string circle;
+    string shape;
+    int height, base, height1, width, radius;
 
-    class Shape { //The Class --Shape is Base class
-    public: //access specifier 
-            Shape() { //Constructor
-            string Color = " ";
-            string getArea = " ";
-            
-        }
-    };
+    SuperShape* p; // create a pointer to base type
 
-    class Rectangle : public Shape {
-    public:
-            Rectangle() {
-            string Color = "Green";
-            string getArea = " Width * Height ";
-        }
-    };
 
-    class Triangle : public Shape {
-    public:
-        Triangle() {
-            string Color = "Blue";
-            string getArea = " Base * Height ";
-        }
-    };
+    
+    cout << "To start, first, give me a shape (it can be a triangle, rectangle, or circle):";
 
-    class Circle : public Shape {
-    public:
-        Circle() {
-            string Color = "Red";
-            string getArea = "Radius";
-        }
-    };
+    cin >> shape;
 
-    int main(); {
-        Shape myObj; //creating an object of Shape to call the constructor
-        cout << myObj.Color + " " + myObj.getArea;
-
-        return 0;
+    if (shape == "triangle") {
+        tri t; // create objects of derived types;
+        cout << "What is the base of the triangle?: ";
+        cin >> base;
+        cout << "What is the height of the triangle? (top to bottom): ";
+        cin >> height;
+        t.Color = "Purple ";
+        cout << "Your color is: ";
+        cout << (t.Color);
+        p = &t;
+        p->set_dim(height, base);
+        p->show_area();
     }
+    else
+        if (shape == "rectangle") {
+            rec s;
+            cout << "What is the width of the rectangle?: ";
+            cin >> width;
+            cout << "What is the height of the rectangle?: ";
+            cin >> height1;
+            s.Color = "Blue ";
+            cout << "Your color is: ";
+            cout << (s.Color);
+            p = &s;
+            p->set_dim(height1, width);
+            p->show_area();
+        }
+        else
+            if (shape == "circle") {
+                circ c;
+                cout << "What is the radius of the circle?: ";
+                cin >> radius;
+                c.Color = "Red ";
+                cout << "Your color is: ";
+                cout << (c.Color);
+                p = &c;
+                p->set_dim(radius);
+                p->show_area();
+            }
+            else
+                cout << "Sorry, that's not one of the options. Please re-enter and try again.";
+
+    return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
